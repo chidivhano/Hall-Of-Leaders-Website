@@ -19,8 +19,6 @@ import {
   AlertCircle
 } from 'lucide-react';
 import { useState, useEffect, FormEvent } from 'react';
-import { db, handleFirestoreError, OperationType, isConfigured } from './firebase';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -287,27 +285,34 @@ const Contact = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    
-    if (!isConfigured || !db) {
-      setStatus('error');
-      console.error("Firebase is not initialized. Please ensure VITE_FIREBASE_API_KEY and other secrets are set in AI Studio.");
-      return;
-    }
-
     setStatus('submitting');
     
-    const path = 'contacts';
+    // We'll use Formspree as a static-friendly way to send emails.
+    // Replace 'your-form-id' with your actual Formspree ID from https://formspree.io/
+    const formspreeId = import.meta.env.VITE_FORMSPREE_ID || 'your-form-id';
+    const endpoint = `https://formspree.io/f/${formspreeId}`;
+
     try {
-      await addDoc(collection(db, path), {
-        ...formData,
-        createdAt: serverTimestamp()
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
       });
-      setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-      setTimeout(() => setStatus('idle'), 5000);
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        throw new Error('Failed to send message');
+      }
     } catch (error) {
+      console.error('Submission error:', error);
       setStatus('error');
-      handleFirestoreError(error, OperationType.WRITE, path);
+      setTimeout(() => setStatus('idle'), 5000);
     }
   };
 
@@ -417,8 +422,8 @@ const Footer = () => {
             </span>
           </div>
           <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-            <div className={`w-2 h-2 rounded-full ${isConfigured ? 'bg-emerald-500 animate-pulse' : 'bg-red-500'}`} />
-            Firebase {isConfigured ? 'Linked' : 'Configuration Missing'}
+            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            Static Site Hosted on GitHub
           </div>
         </div>
         
