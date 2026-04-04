@@ -41,9 +41,14 @@ const Navbar = () => {
             className="h-14 w-auto rounded-xl"
             referrerPolicy="no-referrer"
           />
-          <span className={`font-display font-bold text-xl tracking-tighter ${isScrolled ? 'text-slate-900' : 'text-slate-900'}`}>
-            HALL OF <span className="text-primary">LEADERS</span>
-          </span>
+          <div className="flex flex-col">
+            <span className={`font-display font-bold text-xl tracking-tighter leading-none ${isScrolled ? 'text-slate-900' : 'text-slate-900'}`}>
+              HALL OF <span className="text-primary">LEADERS</span>
+            </span>
+            <span className="text-[10px] font-bold text-primary tracking-[0.2em] uppercase mt-1">
+              Leaders Choose Leaders
+            </span>
+          </div>
         </div>
         
         <div className="hidden md:flex items-center gap-8">
@@ -82,9 +87,6 @@ const Hero = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-6">
-            Leaders Choose Leaders
-          </span>
           <h1 className="text-5xl md:text-7xl font-display font-bold text-slate-900 leading-[1.1] mb-6">
             Elevate Your Business to the <span className="text-primary">Hall of Leaders</span>
           </h1>
@@ -417,9 +419,14 @@ const Footer = () => {
               className="h-12 w-auto rounded-lg"
               referrerPolicy="no-referrer"
             />
-            <span className="font-display font-bold text-lg tracking-tighter text-slate-900">
-              HALL OF <span className="text-primary">LEADERS</span>
-            </span>
+            <div className="flex flex-col">
+              <span className="font-display font-bold text-lg tracking-tighter text-slate-900 leading-none">
+                HALL OF <span className="text-primary">LEADERS</span>
+              </span>
+              <span className="text-[9px] font-bold text-primary tracking-[0.2em] uppercase mt-1">
+                Leaders Choose Leaders
+              </span>
+            </div>
           </div>
           <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
             <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
