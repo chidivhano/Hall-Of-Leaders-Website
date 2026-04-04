@@ -7,3 +7,9 @@
 - [x] Remove the 'Firebase configuration missing' status indicator from the footer
 - [x] Fix build failure by removing dangling Firebase import in main.tsx
 - [x] Commit and push changes to GitHub
+- [x] Enlarge logo and tagline in Header and Footer
+- [x] Implement EmailJS contact form logic
+- [x] Update build workflow and env files for EmailJS secrets
+- [ ] Fix mobile overlap by making branding size responsive
+- [ ] Adjust Hero section padding for mobile clearance
+- [ ] Deploy responsive fixes to GitHub

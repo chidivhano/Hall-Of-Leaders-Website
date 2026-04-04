@@ -38,14 +38,14 @@ const Navbar = () => {
           <img 
             src="https://i.postimg.cc/NFs8dTQp/HALL-OF-LEADERS-LOGO.png" 
             alt="Hall of Leaders Logo" 
-            className="h-20 w-auto rounded-2xl"
+            className="h-16 md:h-20 w-auto rounded-xl md:rounded-2xl"
             referrerPolicy="no-referrer"
           />
           <div className="flex flex-col">
-            <span className={`font-display font-bold text-3xl tracking-tighter leading-none ${isScrolled ? 'text-slate-900' : 'text-slate-900'}`}>
+            <span className="font-display font-bold text-2xl md:text-3xl tracking-tighter leading-none text-slate-900">
               HALL OF <span className="text-primary">LEADERS</span>
             </span>
-            <span className="text-sm font-bold text-primary tracking-[0.25em] uppercase mt-1">
+            <span className="text-[10px] md:text-sm font-bold text-primary tracking-[0.25em] uppercase mt-1">
               Leaders Choose Leaders
             </span>
           </div>
@@ -75,7 +75,7 @@ const Navbar = () => {
 
 const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center pt-32 md:pt-20 overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-200/20 rounded-full blur-3xl" />
@@ -431,14 +431,14 @@ const Footer = () => {
             <img 
               src="https://i.postimg.cc/NFs8dTQp/HALL-OF-LEADERS-LOGO.png" 
               alt="Hall of Leaders Logo" 
-              className="h-16 w-auto rounded-xl"
+              className="h-12 md:h-16 w-auto rounded-lg md:rounded-xl"
               referrerPolicy="no-referrer"
             />
             <div className="flex flex-col">
-              <span className="font-display font-bold text-2xl tracking-tighter text-slate-900 leading-none">
+              <span className="font-display font-bold text-xl md:text-2xl tracking-tighter text-slate-900 leading-none">
                 HALL OF <span className="text-primary">LEADERS</span>
               </span>
-              <span className="text-xs font-bold text-primary tracking-[0.25em] uppercase mt-1">
+              <span className="text-[9px] md:text-xs font-bold text-primary tracking-[0.25em] uppercase mt-1">
                 Leaders Choose Leaders
               </span>
             </div>
