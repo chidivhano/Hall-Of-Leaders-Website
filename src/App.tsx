@@ -428,10 +428,6 @@ const Footer = () => {
               </span>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            Static Site Hosted on GitHub
-          </div>
         </div>
         
         <p className="text-slate-500 text-sm">
