@@ -34,18 +34,18 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <img 
             src="https://i.postimg.cc/NFs8dTQp/HALL-OF-LEADERS-LOGO.png" 
             alt="Hall of Leaders Logo" 
-            className="h-14 w-auto rounded-xl"
+            className="h-20 w-auto rounded-2xl"
             referrerPolicy="no-referrer"
           />
           <div className="flex flex-col">
-            <span className={`font-display font-bold text-xl tracking-tighter leading-none ${isScrolled ? 'text-slate-900' : 'text-slate-900'}`}>
+            <span className={`font-display font-bold text-3xl tracking-tighter leading-none ${isScrolled ? 'text-slate-900' : 'text-slate-900'}`}>
               HALL OF <span className="text-primary">LEADERS</span>
             </span>
-            <span className="text-[10px] font-bold text-primary tracking-[0.2em] uppercase mt-1">
+            <span className="text-sm font-bold text-primary tracking-[0.25em] uppercase mt-1">
               Leaders Choose Leaders
             </span>
           </div>
@@ -289,19 +289,34 @@ const Contact = () => {
     e.preventDefault();
     setStatus('submitting');
     
-    // We'll use Formspree as a static-friendly way to send emails.
-    // Replace 'your-form-id' with your actual Formspree ID from https://formspree.io/
-    const formspreeId = import.meta.env.VITE_FORMSPREE_ID || 'your-form-id';
-    const endpoint = `https://formspree.io/f/${formspreeId}`;
+    // EmailJS Configuration
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error("EmailJS keys are missing. Please set VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, and VITE_EMAILJS_PUBLIC_KEY as GitHub Secrets.");
+      setStatus('error');
+      return;
+    }
 
     try {
-      const response = await fetch(endpoint, {
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          service_id: serviceId,
+          template_id: templateId,
+          user_id: publicKey,
+          template_params: {
+            from_name: formData.name,
+            from_email: formData.email,
+            message: formData.message,
+            to_name: 'Hall of Leaders Team'
+          }
+        })
       });
 
       if (response.ok) {
@@ -412,18 +427,18 @@ const Footer = () => {
     <footer className="py-12 px-6 border-t border-slate-100">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <img 
               src="https://i.postimg.cc/NFs8dTQp/HALL-OF-LEADERS-LOGO.png" 
               alt="Hall of Leaders Logo" 
-              className="h-12 w-auto rounded-lg"
+              className="h-16 w-auto rounded-xl"
               referrerPolicy="no-referrer"
             />
             <div className="flex flex-col">
-              <span className="font-display font-bold text-lg tracking-tighter text-slate-900 leading-none">
+              <span className="font-display font-bold text-2xl tracking-tighter text-slate-900 leading-none">
                 HALL OF <span className="text-primary">LEADERS</span>
               </span>
-              <span className="text-[9px] font-bold text-primary tracking-[0.2em] uppercase mt-1">
+              <span className="text-xs font-bold text-primary tracking-[0.25em] uppercase mt-1">
                 Leaders Choose Leaders
               </span>
             </div>
