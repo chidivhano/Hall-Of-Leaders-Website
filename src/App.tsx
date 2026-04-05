@@ -16,7 +16,10 @@ import {
   Settings,
   Layers,
   CheckCircle2,
-  AlertCircle
+  AlertCircle,
+  MapPin,
+  Linkedin,
+  Twitter
 } from 'lucide-react';
 import { useState, useEffect, FormEvent } from 'react';
 
@@ -33,19 +36,19 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center gap-4">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
+        <div className="flex items-center gap-3 md:gap-4">
           <img 
             src="https://i.postimg.cc/NFs8dTQp/HALL-OF-LEADERS-LOGO.png" 
             alt="Hall of Leaders Logo" 
-            className="h-16 md:h-20 w-auto rounded-xl md:rounded-2xl"
+            className="h-12 md:h-16 lg:h-20 w-auto rounded-xl md:rounded-2xl"
             referrerPolicy="no-referrer"
           />
           <div className="flex flex-col">
-            <span className="font-display font-bold text-2xl md:text-3xl tracking-tighter leading-none text-slate-900">
+            <span className="font-display font-bold text-xl md:text-2xl lg:text-3xl tracking-tighter leading-none text-slate-900">
               HALL OF <span className="text-primary">LEADERS</span>
             </span>
-            <span className="text-[10px] md:text-sm font-bold text-primary tracking-[0.25em] uppercase mt-1">
+            <span className="text-[8px] md:text-xs lg:text-sm font-bold text-primary tracking-[0.25em] uppercase mt-0.5 md:mt-1">
               Leaders Choose Leaders
             </span>
           </div>
@@ -75,7 +78,7 @@ const Navbar = () => {
 
 const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-32 md:pt-20 overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center pt-24 md:pt-32 lg:pt-20 overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-200/20 rounded-full blur-3xl" />
@@ -348,7 +351,7 @@ const Contact = () => {
               
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
                     <Mail size={24} />
                   </div>
                   <div>
@@ -357,6 +360,38 @@ const Contact = () => {
                       Hello@hallofleaders.co.za
                     </a>
                   </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <MapPin size={24} />
+                  </div>
+                  <div>
+                    <p className="text-sm text-emerald-100 font-bold uppercase tracking-wider">Our Headquarters</p>
+                    <p className="text-lg font-bold leading-tight">
+                      307 Polofields Lifestyle Estate, Polofields Drive,<br />
+                      Midrand, South Africa, 1685
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-6 pt-4">
+                  <a 
+                    href="https://www.linkedin.com/company/hall-of-leaders/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all"
+                  >
+                    <Linkedin size={24} />
+                  </a>
+                  <a 
+                    href="https://twitter.com/HallOfLeaders" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all"
+                  >
+                    <Twitter size={24} />
+                  </a>
                 </div>
               </div>
             </div>
@@ -424,21 +459,21 @@ const Contact = () => {
 
 const Footer = () => {
   return (
-    <footer className="py-12 px-6 border-t border-slate-100">
+    <footer className="py-12 px-4 md:px-6 border-t border-slate-100">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 md:gap-4">
             <img 
               src="https://i.postimg.cc/NFs8dTQp/HALL-OF-LEADERS-LOGO.png" 
               alt="Hall of Leaders Logo" 
-              className="h-12 md:h-16 w-auto rounded-lg md:rounded-xl"
+              className="h-10 md:h-12 lg:h-16 w-auto rounded-lg md:rounded-xl"
               referrerPolicy="no-referrer"
             />
             <div className="flex flex-col">
-              <span className="font-display font-bold text-xl md:text-2xl tracking-tighter text-slate-900 leading-none">
+              <span className="font-display font-bold text-lg md:text-xl lg:text-2xl tracking-tighter text-slate-900 leading-none">
                 HALL OF <span className="text-primary">LEADERS</span>
               </span>
-              <span className="text-[9px] md:text-xs font-bold text-primary tracking-[0.25em] uppercase mt-1">
+              <span className="text-[8px] md:text-[9px] lg:text-xs font-bold text-primary tracking-[0.25em] uppercase mt-0.5 md:mt-1">
                 Leaders Choose Leaders
               </span>
             </div>
@@ -450,9 +485,24 @@ const Footer = () => {
         </p>
         
         <div className="flex gap-6">
-          {['Privacy', 'Terms', 'LinkedIn', 'Twitter'].map(item => (
-            <a key={item} href="#" className="text-sm text-slate-400 hover:text-primary transition-colors">{item}</a>
-          ))}
+          <a href="#" className="text-sm text-slate-400 hover:text-primary transition-colors">Privacy</a>
+          <a href="#" className="text-sm text-slate-400 hover:text-primary transition-colors">Terms</a>
+          <a 
+            href="https://www.linkedin.com/company/hall-of-leaders/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-sm text-slate-400 hover:text-primary transition-colors"
+          >
+            LinkedIn
+          </a>
+          <a 
+            href="https://twitter.com/HallOfLeaders" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-sm text-slate-400 hover:text-primary transition-colors"
+          >
+            Twitter
+          </a>
         </div>
       </div>
     </footer>

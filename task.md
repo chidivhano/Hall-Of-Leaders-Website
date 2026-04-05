@@ -9,7 +9,9 @@
 - [x] Commit and push changes to GitHub
 - [x] Enlarge logo and tagline in Header and Footer
 - [x] Implement EmailJS contact form logic
-- [x] Update build workflow and env files for EmailJS secrets
-- [ ] Fix mobile overlap by making branding size responsive
-- [ ] Adjust Hero section padding for mobile clearance
-- [ ] Deploy responsive fixes to GitHub
+- [x] Create and provide EmailJS setup walkthrough
+- [x] Fix mobile overlap by making branding size responsive
+- [x] Adjust Hero section padding for mobile clearance
+- [x] Add physical address to Contact section
+- [x] Add LinkedIn and Twitter links to Contact section and Footer
+- [x] Deploy responsive and contact fixes to GitHub (Ready for Push)
