@@ -379,7 +379,7 @@ const Contact = () => {
 
                 <div className="flex items-center gap-6 pt-4">
                   <a
-                    href="https://www.linkedin.com/company/hall-of-leaders/"
+                    href="https://www.linkedin.com/company/hall-of-leaders-pty-ltd"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all"
