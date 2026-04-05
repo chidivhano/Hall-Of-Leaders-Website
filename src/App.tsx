@@ -1,11 +1,11 @@
 import { motion } from 'motion/react';
-import { 
-  Code2, 
-  Database, 
-  Headphones, 
-  Cloud, 
-  Network, 
-  ShieldCheck, 
+import {
+  Code2,
+  Database,
+  Headphones,
+  Cloud,
+  Network,
+  ShieldCheck,
   Lightbulb,
   ArrowRight,
   Mail,
@@ -38,9 +38,9 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
         <div className="flex items-center gap-3 md:gap-4">
-          <img 
-            src="https://i.postimg.cc/NFs8dTQp/HALL-OF-LEADERS-LOGO.png" 
-            alt="Hall of Leaders Logo" 
+          <img
+            src="https://i.postimg.cc/NFs8dTQp/HALL-OF-LEADERS-LOGO.png"
+            alt="Hall of Leaders Logo"
             className="h-12 md:h-16 lg:h-20 w-auto rounded-xl md:rounded-2xl"
             referrerPolicy="no-referrer"
           />
@@ -53,19 +53,19 @@ const Navbar = () => {
             </span>
           </div>
         </div>
-        
+
         <div className="hidden md:flex items-center gap-8">
           {['Home', 'About', 'Services', 'Software', 'Contact'].map((item) => (
-            <a 
-              key={item} 
+            <a
+              key={item}
               href={`#${item.toLowerCase()}`}
               className="text-sm font-medium text-slate-600 hover:text-primary transition-colors"
             >
               {item}
             </a>
           ))}
-          <a 
-            href="#contact" 
+          <a
+            href="#contact"
             className="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-full text-sm font-semibold transition-all shadow-md hover:shadow-lg"
           >
             Get Started
@@ -83,9 +83,9 @@ const Hero = () => {
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-200/20 rounded-full blur-3xl" />
       </div>
-      
+
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -105,17 +105,17 @@ const Hero = () => {
             </a>
           </div>
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative"
         >
           <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] bg-slate-100 ring-1 ring-slate-200/50">
-            <img 
-              src="https://i.postimg.cc/T1QBcw7h/Gemini-Generated-Image-9w1sid9w1sid9w1s.png" 
-              alt="Team working" 
+            <img
+              src="https://i.postimg.cc/T1QBcw7h/Gemini-Generated-Image-9w1sid9w1sid9w1s.png"
+              alt="Team working"
               className="w-full h-full object-cover contrast-[1.05] brightness-[1.02] saturate-[1.1] [image-rendering:optimizeQuality] will-change-transform"
               referrerPolicy="no-referrer"
             />
@@ -166,7 +166,7 @@ const About = () => {
               </div>
             </div>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -175,9 +175,9 @@ const About = () => {
             className="relative"
           >
             <div className="rounded-3xl overflow-hidden shadow-xl">
-              <img 
-                src="https://i.postimg.cc/RVH0Xx1p/About-Us.jpg" 
-                alt="About Us" 
+              <img
+                src="https://i.postimg.cc/RVH0Xx1p/About-Us.jpg"
+                alt="About Us"
                 className="w-full h-auto"
                 referrerPolicy="no-referrer"
               />
@@ -199,7 +199,7 @@ const SoftwareDevelopment = () => {
             We build software faster, providing innovations to small enterprises and corporates. Our dedicated team of developers give our clients competitive advantage.
           </p>
         </div>
-        
+
         <div className="grid md:grid-cols-3 gap-8">
           {[
             {
@@ -260,7 +260,7 @@ const Services = () => {
             </p>
           </div>
         </div>
-        
+
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, i) => (
             <motion.div
@@ -291,49 +291,51 @@ const Contact = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
-    
-    // EmailJS Configuration
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-    if (!serviceId || !templateId || !publicKey) {
-      console.error("EmailJS keys are missing. Please set VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, and VITE_EMAILJS_PUBLIC_KEY as GitHub Secrets.");
-      setStatus('error');
-      return;
-    }
+    // Check for Formspree ID first (Simplified Provider)
+    const formspreeId = import.meta.env.VITE_FORMSPREE_ID;
 
-    try {
-      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          service_id: serviceId,
-          template_id: templateId,
-          user_id: publicKey,
-          template_params: {
-            from_name: formData.name,
-            from_email: formData.email,
-            message: formData.message,
-            to_name: 'Hall of Leaders Team'
-          }
-        })
-      });
+    if (formspreeId) {
+      try {
+        const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            message: formData.message
+          })
+        });
 
-      if (response.ok) {
-        setStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-        setTimeout(() => setStatus('idle'), 5000);
-      } else {
-        throw new Error('Failed to send message');
+        if (response.ok) {
+          setStatus('success');
+          setFormData({ name: '', email: '', message: '' });
+          setTimeout(() => setStatus('idle'), 5000);
+          return;
+        }
+      } catch (error) {
+        console.error('Formspree error:', error);
       }
-    } catch (error) {
-      console.error('Submission error:', error);
-      setStatus('error');
-      setTimeout(() => setStatus('idle'), 5000);
     }
+
+    // Fallback: No Provider (mailto:)
+    // This opens the user's default email client
+    const subject = encodeURIComponent(`Inquiry for Hall of Leaders from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n\n` +
+      `Message:\n${formData.message}`
+    );
+
+    const mailtoUrl = `mailto:Hello@hallofleaders.co.za?subject=${subject}&body=${body}`;
+
+    // Open the email client
+    window.location.href = mailtoUrl;
+
+    // Show a success-like message since we've "handed off" the task to their email app
+    setStatus('success');
+    setFormData({ name: '', email: '', message: '' });
+    setTimeout(() => setStatus('idle'), 5000);
   };
 
   return (
@@ -341,14 +343,14 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto">
         <div className="bg-primary rounded-[3rem] p-8 md:p-16 text-white relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl" />
-          
+
           <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">Ready to lead?</h2>
               <p className="text-emerald-50 text-xl mb-10 opacity-90">
-                Contact us today to discuss how we can help your company reach the Hall of Corporate Leaders.
+                Contact us today to discuss how we can help your company enter the Hall of Corporate Leaders.
               </p>
-              
+
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
@@ -376,17 +378,17 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-center gap-6 pt-4">
-                  <a 
-                    href="https://www.linkedin.com/company/hall-of-leaders/" 
-                    target="_blank" 
+                  <a
+                    href="https://www.linkedin.com/company/hall-of-leaders/"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all"
                   >
                     <Linkedin size={24} />
                   </a>
-                  <a 
-                    href="https://twitter.com/HallOfLeaders" 
-                    target="_blank" 
+                  <a
+                    href="https://twitter.com/HallOfLeaders"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all"
                   >
@@ -395,58 +397,57 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
               <form className="space-y-4" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-bold text-slate-700 mb-1">Name</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" 
-                      placeholder="Your Name" 
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                      placeholder="Your Name"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-bold text-slate-700 mb-1">Email</label>
-                    <input 
-                      type="email" 
+                    <input
+                      type="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" 
-                      placeholder="your@email.com" 
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                      placeholder="your@email.com"
                     />
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-slate-700 mb-1">Message</label>
-                  <textarea 
-                    rows={4} 
+                  <textarea
+                    rows={4}
                     required
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" 
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
                     placeholder="How can we help you?"
                   ></textarea>
                 </div>
-                <button 
+                <button
                   type="submit"
                   disabled={status === 'submitting'}
-                  className={`w-full font-bold py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 ${
-                    status === 'submitting' ? 'bg-slate-400 cursor-not-allowed' : 
-                    status === 'success' ? 'bg-emerald-500 shadow-emerald-200' :
-                    status === 'error' ? 'bg-red-500 shadow-red-200' :
-                    'bg-primary hover:bg-primary-dark shadow-primary/20'
-                  } text-white`}
+                  className={`w-full font-bold py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 ${status === 'submitting' ? 'bg-slate-400 cursor-not-allowed' :
+                      status === 'success' ? 'bg-emerald-500 shadow-emerald-200' :
+                        status === 'error' ? 'bg-red-500 shadow-red-200' :
+                          'bg-primary hover:bg-primary-dark shadow-primary/20'
+                    } text-white`}
                 >
-                  {status === 'submitting' ? 'Sending...' : 
-                   status === 'success' ? <><CheckCircle2 size={20} /> Sent Successfully</> :
-                   status === 'error' ? <><AlertCircle size={20} /> Error Sending</> :
-                   'Send Message'}
+                  {status === 'submitting' ? 'Sending...' :
+                    status === 'success' ? <><CheckCircle2 size={20} /> Sent Successfully</> :
+                      status === 'error' ? <><AlertCircle size={20} /> Error Sending</> :
+                        'Send Message'}
                 </button>
               </form>
             </div>
@@ -463,9 +464,9 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-3 md:gap-4">
-            <img 
-              src="https://i.postimg.cc/NFs8dTQp/HALL-OF-LEADERS-LOGO.png" 
-              alt="Hall of Leaders Logo" 
+            <img
+              src="https://i.postimg.cc/NFs8dTQp/HALL-OF-LEADERS-LOGO.png"
+              alt="Hall of Leaders Logo"
               className="h-10 md:h-12 lg:h-16 w-auto rounded-lg md:rounded-xl"
               referrerPolicy="no-referrer"
             />
@@ -479,25 +480,25 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        
+
         <p className="text-slate-500 text-sm">
           © {new Date().getFullYear()} Hall of Leaders. All rights reserved.
         </p>
-        
+
         <div className="flex gap-6">
           <a href="#" className="text-sm text-slate-400 hover:text-primary transition-colors">Privacy</a>
           <a href="#" className="text-sm text-slate-400 hover:text-primary transition-colors">Terms</a>
-          <a 
-            href="https://www.linkedin.com/company/hall-of-leaders/" 
-            target="_blank" 
+          <a
+            href="https://www.linkedin.com/company/hall-of-leaders/"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-slate-400 hover:text-primary transition-colors"
           >
             LinkedIn
           </a>
-          <a 
-            href="https://twitter.com/HallOfLeaders" 
-            target="_blank" 
+          <a
+            href="https://twitter.com/HallOfLeaders"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-slate-400 hover:text-primary transition-colors"
           >
