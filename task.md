@@ -13,8 +13,8 @@
 - [x] Fix mobile overlap by making branding size responsive
 - [x] Adjust Hero section padding for mobile clearance
 - [x] Add physical address to Contact section
-- [x] Add LinkedIn and Twitter links to Contact section and Footer
-- [x] Implement "Zero-Provider" contact form fallback (mailto:)
+- [x] Implement Formspree contact form logic (with mailto: fallback)
+- [x] Create and provide Formspree setup walkthrough
 - [x] Integrate company logo as favicon in index.html
 - [x] Optimize for Google search favicon display (SEO tags & robots.txt)
 - [x] Deploy responsive, contact, and branding fixes to GitHub (Live)
