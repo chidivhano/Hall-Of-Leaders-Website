@@ -348,7 +348,7 @@ const Contact = () => {
             <div>
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">Ready to lead?</h2>
               <p className="text-emerald-50 text-xl mb-10 opacity-90">
-                Contact us today to discuss how we can help your company enter the Hall of Corporate Leaders.
+                Contact us today to discuss how we can help your company to enter the Hall of Corporate Leaders.
               </p>
 
               <div className="space-y-6">
@@ -439,9 +439,9 @@ const Contact = () => {
                   type="submit"
                   disabled={status === 'submitting'}
                   className={`w-full font-bold py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 ${status === 'submitting' ? 'bg-slate-400 cursor-not-allowed' :
-                      status === 'success' ? 'bg-emerald-500 shadow-emerald-200' :
-                        status === 'error' ? 'bg-red-500 shadow-red-200' :
-                          'bg-primary hover:bg-primary-dark shadow-primary/20'
+                    status === 'success' ? 'bg-emerald-500 shadow-emerald-200' :
+                      status === 'error' ? 'bg-red-500 shadow-red-200' :
+                        'bg-primary hover:bg-primary-dark shadow-primary/20'
                     } text-white`}
                 >
                   {status === 'submitting' ? 'Sending...' :

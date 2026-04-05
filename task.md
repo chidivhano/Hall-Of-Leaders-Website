@@ -16,5 +16,6 @@
 - [x] Add LinkedIn and Twitter links to Contact section and Footer
 - [x] Implement "Zero-Provider" contact form fallback (mailto:)
 - [x] Integrate company logo as favicon in index.html
+- [x] Optimize for Google search favicon display (SEO tags & robots.txt)
 - [x] Deploy responsive, contact, and branding fixes to GitHub (Live)
 - [x] Verify live deployment at https://hallofleaders.co.za/

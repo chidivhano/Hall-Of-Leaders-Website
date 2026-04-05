@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Allow: /https://i.postimg.cc/NFs8dTQp/HALL-OF-LEADERS-LOGO.png
+
+Sitemap: https://hallofleaders.co.za/sitemap.xml
