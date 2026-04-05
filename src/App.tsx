@@ -291,11 +291,12 @@ const Contact = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
+    
+    // Check for Formspree ID from Env, or use the provided default for this site
+    // Defaulting to "maqlandq" as provided by the user for a short-term fix
+    const formspreeId = import.meta.env.VITE_FORMSPREE_ID || 'maqlandq';
 
-    // Check for Formspree ID first (Simplified Provider)
-    const formspreeId = import.meta.env.VITE_FORMSPREE_ID;
-
-    if (formspreeId) {
+    if (formspreeId && formspreeId !== '') {
       try {
         const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
           method: 'POST',
@@ -312,27 +313,24 @@ const Contact = () => {
           setFormData({ name: '', email: '', message: '' });
           setTimeout(() => setStatus('idle'), 5000);
           return;
+        } else {
+          throw new Error('Formspree response not OK');
         }
       } catch (error) {
         console.error('Formspree error:', error);
       }
     }
 
-    // Fallback: No Provider (mailto:)
-    // This opens the user's default email client
+    // Ultimate Fallback: No Provider (mailto:)
+    // Only happens if BOTH the env var and hardcoded fallback are missing (unlikely)
     const subject = encodeURIComponent(`Inquiry for Hall of Leaders from ${formData.name}`);
     const body = encodeURIComponent(
       `Name: ${formData.name}\n` +
       `Email: ${formData.email}\n\n` +
       `Message:\n${formData.message}`
     );
-
-    const mailtoUrl = `mailto:Hello@hallofleaders.co.za?subject=${subject}&body=${body}`;
-
-    // Open the email client
-    window.location.href = mailtoUrl;
-
-    // Show a success-like message since we've "handed off" the task to their email app
+    
+    window.location.href = `mailto:Hello@hallofleaders.co.za?subject=${subject}&body=${body}`;
     setStatus('success');
     setFormData({ name: '', email: '', message: '' });
     setTimeout(() => setStatus('idle'), 5000);
