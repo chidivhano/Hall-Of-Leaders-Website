@@ -14,4 +14,6 @@
 - [x] Adjust Hero section padding for mobile clearance
 - [x] Add physical address to Contact section
 - [x] Add LinkedIn and Twitter links to Contact section and Footer
-- [x] Deploy responsive and contact fixes to GitHub (Ready for Push)
+- [x] Integrate company logo as favicon in index.html
+- [x] Deploy responsive, contact, and branding fixes to GitHub (Live)
+- [x] Verify live deployment at https://hallofleaders.co.za/
