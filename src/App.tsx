@@ -19,7 +19,20 @@ import {
   AlertCircle,
   MapPin,
   Linkedin,
-  Twitter
+  Twitter,
+  GraduationCap,
+  BookOpen,
+  MonitorPlay,
+  Users,
+  Target,
+  BrainCircuit,
+  Scale,
+  Globe,
+  Landmark,
+  Umbrella,
+  Lock,
+  Briefcase,
+  Laptop
 } from 'lucide-react';
 import { useState, useEffect, FormEvent } from 'react';
 
@@ -55,7 +68,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-8">
-          {['Home', 'About', 'Services', 'Software', 'Contact'].map((item) => (
+          {['Home', 'About', 'Software', 'Services', 'Training', 'Leadership', 'Contact'].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -277,6 +290,229 @@ const Services = () => {
               <span className="text-lg font-medium">{service.name}</span>
               <ChevronRight className="ml-auto text-white/20 group-hover:text-primary transition-colors" size={20} />
             </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const TrainingProgrammes = () => {
+  return (
+    <section id="training" className="section-padding bg-slate-50">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-4xl font-display font-bold mb-6">Training Programmes</h2>
+          <p className="text-lg text-slate-600">
+            Empower your team with cutting-edge knowledge. Our training programmes are designed to build the next generation of corporate leaders in the digital age.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
+              <GraduationCap className="text-primary" size={28} />
+              Our Core Programmes
+            </h3>
+            <div className="space-y-4">
+              {[
+                { name: "AI-Powered Leadership", icon: <BrainCircuit size={20} /> },
+                { name: "Digital Transformation and Ethics", icon: <Scale size={20} /> },
+                { name: "Leading Business in the Digital Age", icon: <Globe size={20} /> },
+                { name: "Artificial Intelligence in Banking", icon: <Landmark size={20} /> },
+                { name: "Artificial Intelligence in Insurance", icon: <Umbrella size={20} /> },
+                { name: "Cybersecurity, Data Sovereignty, and AI Governance", icon: <Lock size={20} /> },
+                { name: "AI for Business Leaders", icon: <Briefcase size={20} /> },
+                { name: "AI Course for Designers and Developers", icon: <Laptop size={20} /> }
+              ].map((prog, i) => (
+                <div key={i} className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100 hover:border-primary/50 transition-colors hover:shadow-md">
+                   <div className="w-10 h-10 rounded-lg bg-emerald-50 text-primary flex items-center justify-center shrink-0">
+                     {prog.icon}
+                   </div>
+                   <span className="font-semibold text-slate-800">{prog.name}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8"
+          >
+            <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-video bg-slate-200">
+              <img 
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                alt="Training Session" 
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent flex items-end p-6">
+                <span className="text-white font-bold text-lg">World-Class Delivery</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                 <Target className="text-primary" size={28} />
+                 Training Options
+              </h3>
+              <div className="space-y-4">
+                <div className="group p-5 bg-white border border-slate-100 rounded-xl shadow-sm">
+                  <div className="flex items-start gap-4">
+                    <Users className="text-primary mt-1 shrink-0" size={24} />
+                    <div>
+                      <h4 className="font-bold text-lg text-slate-900 mb-1">Face-to-Face Training</h4>
+                      <p className="text-slate-600 text-sm">In our chosen location</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="group p-5 bg-white border border-slate-100 rounded-xl shadow-sm">
+                  <div className="flex items-start gap-4">
+                    <BookOpen className="text-primary mt-1 shrink-0" size={24} />
+                    <div>
+                      <h4 className="font-bold text-lg text-slate-900 mb-1">In-house Training</h4>
+                      <p className="text-slate-600 text-sm">Programmes can be tailored to meet your specific needs and run as an in-house at your chosen location</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="group p-5 bg-white border border-slate-100 rounded-xl shadow-sm">
+                  <div className="flex items-start gap-4">
+                    <MonitorPlay className="text-primary mt-1 shrink-0" size={24} />
+                    <div>
+                      <h4 className="font-bold text-lg text-slate-900 mb-1">Virtual Live Training</h4>
+                      <p className="text-slate-600 text-sm">We can deliver some of our programmes virtually</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ExecutiveLeadership = () => {
+  return (
+    <section id="leadership" className="section-padding bg-[#042f2e] text-emerald-50">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center md:text-left mb-16 border-b border-teal-800/50 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl font-display font-bold text-white mb-4">Executive Leadership</h2>
+            <p className="text-lg text-teal-200/80 max-w-2xl">
+              Guided by visionary leadership and unparalleled academic excellence to drive digital transformation.
+            </p>
+          </motion.div>
+        </div>
+
+        <div className="space-y-24">
+          {[
+            {
+              name: "Dr. Rabelani Dagada",
+              role: "Founder & Executive Chairman",
+              image: "https://i.postimg.cc/fRr3KWqz/IMG-20260403-WA0010.jpg",
+              leadership: (
+                <>
+                  Head of Department: Digital Transformation and Supply Chain Management<br />
+                  <span className="text-teal-300">at UNISA Graduate School of Business Leadership</span>
+                </>
+              ),
+              education: [
+                { degree: "PhD in Information Systems", inst: "UNISA" },
+                { degree: "PhD in Developmental Economics", inst: "Wits" },
+                { degree: "Master's of Commerce in Information Systems", inst: "Wits" },
+                { degree: "Master's in Educational Computing", inst: "Rand Afrikaans University" }
+              ]
+            },
+            {
+              name: "Tshidivhano Dagada",
+              role: "Chief Strategic Officer",
+              image: "https://i.postimg.cc/hvXCwtbF/Screenshot-20251006-165519-Whats-App-(1).jpg",
+              leadership: (
+                <>
+                  Chief Strategic Officer at Hall of Leaders<br />
+                  <span className="text-teal-300">and President of Hall of Leaders Foundation</span>
+                </>
+              ),
+              education: []
+            }
+          ].map((exec, idx) => (
+            <div key={idx} className={`grid lg:grid-cols-2 gap-12 items-center ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className={`relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border-4 border-teal-800/30 ${idx % 2 !== 0 ? 'lg:order-2' : ''}`}
+              >
+                <img
+                  src={exec.image}
+                  alt={`${exec.name} - ${exec.role}`}
+                  className="w-full h-auto"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#042f2e]/80 via-transparent to-transparent pointer-events-none"></div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: idx % 2 !== 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className={`flex flex-col space-y-8 ${idx % 2 !== 0 ? 'lg:order-1' : ''}`}
+              >
+                <div>
+                  <h3 className="text-4xl md:text-5xl font-bold text-white font-display mb-2 drop-shadow-sm flex items-center justify-center md:justify-start">{exec.name}</h3>
+                  <p className="text-teal-400 font-bold tracking-widest uppercase text-sm flex justify-center md:justify-start text-center md:text-left">{exec.role}</p>
+                </div>
+
+                <div className="bg-teal-900/40 p-6 rounded-2xl border border-teal-800/50 backdrop-blur-sm relative overflow-hidden group hover:bg-teal-900/60 transition-colors">
+                  <div className="absolute top-0 right-0 p-4 opacity-10">
+                    <Briefcase size={80} />
+                  </div>
+                  <h4 className="flex items-center gap-2 text-lg font-bold text-white mb-3">
+                    <Briefcase className="text-teal-400" size={20} />
+                    Current Primary Leadership
+                  </h4>
+                  <p className="text-teal-100/90 leading-relaxed font-medium relative z-10">
+                    {exec.leadership}
+                  </p>
+                </div>
+
+                {exec.education && exec.education.length > 0 && (
+                  <div>
+                    <h4 className="flex items-center gap-2 text-xl font-bold text-white mb-6">
+                      <GraduationCap className="text-teal-400" size={24} />
+                      Academic Foundation Matrix
+                    </h4>
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      {exec.education.map((edu, i) => (
+                        <div key={i} className="bg-teal-900/20 p-5 rounded-xl border border-teal-800/30 hover:border-teal-500/50 transition-colors flex flex-col justify-center">
+                          <p className="font-bold text-teal-50 mb-1 leading-tight">{edu.degree}</p>
+                          <p className="text-sm text-teal-400 font-medium">{edu.inst}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -516,6 +752,8 @@ export default function App() {
       <About />
       <SoftwareDevelopment />
       <Services />
+      <TrainingProgrammes />
+      <ExecutiveLeadership />
       <Contact />
       <Footer />
     </div>

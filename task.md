@@ -13,6 +13,10 @@
 - [x] Fix mobile overlap by making branding size responsive
 - [x] Adjust Hero section padding for mobile clearance
 - [x] Add physical address to Contact section
+- [x] Update `App.tsx` imports from `lucide-react`
+- [x] Update `Navbar` items in `App.tsx` to include Training and Leadership
+- [x] Add `TrainingProgrammes` and `ExecutiveLeadership` components to `App.tsx`
+- [x] Update the main `App` component export to render the new sections
 - [x] Implement Formspree contact form logic (with mailto: fallback)
 - [x] Create and provide Formspree setup walkthrough
 - [x] Integrate company logo as favicon in index.html
