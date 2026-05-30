@@ -17,7 +17,6 @@ import {
   Layers,
   CheckCircle2,
   AlertCircle,
-  MapPin,
   Linkedin,
   Twitter,
   GraduationCap,
@@ -598,18 +597,6 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                    <MapPin size={24} />
-                  </div>
-                  <div>
-                    <p className="text-sm text-emerald-100 font-bold uppercase tracking-wider">Our Headquarters</p>
-                    <p className="text-lg font-bold leading-tight">
-                      307 Polofields Lifestyle Estate, Polofields Drive,<br />
-                      Midrand, South Africa, 1685
-                    </p>
-                  </div>
-                </div>
 
                 <div className="flex items-center gap-6 pt-4">
                   <a
